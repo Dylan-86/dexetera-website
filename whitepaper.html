@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dexetera Whitepaper | Gas-Free DEX on Hyperliquid</title>
+    <meta name="description" content="Read the Dexetera whitepaper: a high-performance gas-free DEX on Hyperliquid L1. Learn about our architecture, custom futures markets, fee structure, and roadmap.">
+    <meta name="title" content="Dexetera Whitepaper | Gas-Free DEX on Hyperliquid">
+    <link rel="canonical" href="https://dexetera.org/whitepaper.html">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Dexetera Labs">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dexetera.org/whitepaper.html">
+    <meta property="og:title" content="Dexetera Whitepaper | Gas-Free DEX on Hyperliquid">
+    <meta property="og:description" content="Read the Dexetera whitepaper: a high-performance gas-free DEX on Hyperliquid L1. Learn about our architecture, custom futures markets, fee structure, and roadmap.">
+    <meta property="og:site_name" content="Dexetera">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="@DexeteraLabs">
+    <meta property="twitter:title" content="Dexetera Whitepaper | Gas-Free DEX on Hyperliquid">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .whitepaper-container {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #22c55e, #14b8a6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            color: var(--accent);
+        }
+
+        h3 {
+            margin-top: 1.5rem;
+            color: var(--text);
+        }
+
+        p,
+        li {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .mermaid {
+            background: white !important;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        [data-theme="dark"] .mermaid {
+            background: #f8fafc !important;
+            /* Slightly off-white for better contrast in dark mode if needed, or keep white */
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid var(--border);
+            margin: 3rem 0;
+        }
+
+        .metadata {
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        .metadata strong {
+            color: var(--text);
+        }
+
+        /* Navbar Tweak */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <div class="nav-left">
+            <div class="brand-mark"><img src="logo.svg" alt="Dexetera Logo" /></div>
+            <div class="brand-text">Dexetera</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="markets.html">Markets</a>
+          <a href="about.html">About Us</a>
+          <a href="security.html">Security</a>
+          <a href="whitepaper.html" class="active">Whitepaper</a>
+        </nav>
+        <div class="nav-right">
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+          <a href="https://doc.dexetera.win"><button class="nav-ghost">Docs</button></a>
+          <a href="https://dexetera.xyz" class="nav-cta" target="_blank" rel="noopener">Launch App</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="whitepaper-container">
+        <h1 id="dexetera-whitepaper-trade-anything-measurable">Dexetera WhitePaper: Trade Anything Measurable</h1>
+        <div class="metadata">
+            <strong>Date</strong>: February 2026<br>
+            <strong>Version</strong>: 1.0<br>
+            <strong>Status</strong>: Draft
+        </div>
+        <hr>
+        <h2 id="1-abstract">1. Abstract</h2>
+        <p>Dexetera is a high-performance decentralized exchange (DEX) built on the Hyperliquid L1, created and
+            engineered to
+            enable the trading of &quot;anything measurable.&quot; </p>
+        <p>By abstracting the complexities of blockchain interaction through gas-free, one-click trading and specialized
+            cross-chain infrastructure, Dexetera bridges the gap between the efficiency of centralized platforms and the
+            sovereignty of DeFi. </p>
+        <p>The protocol addresses critical issues in the current market, including custody risk, opaque liquidations,
+            and rigid
+            asset selection. Through a permissionless market creation suite, Dexetera lets users create and trade custom
+            futures
+            contracts on any verifiable data source, from traditional crypto assets to local economic metrics. With a
+            robust
+            on-chain order book, a dynamic liquidation engine, and a sustainable fee-based economic model, Dexetera
+            provides an
+            institutional-grade foundation for the next generation of decentralized trading.</p>
+        <hr>
+        <h2 id="2-introduction">2. Introduction</h2>
+        <h3 id="the-problem-limitations-of-centralized-systems">The Problem: Limitations of Centralized Systems</h3>
+        <p>Modern financial markets are dominated by centralized exchanges (CEXs) that introduce a layer of counterparty
+            risk
+            and friction. High-frequency traders and retail participants alike face significant hurdles:</p>
+        <ul>
+            <li><strong>Custody Risk</strong>: Users must surrender control of their assets to intermediaries, making
+                them
+                vulnerable to exchange insolvency or mismanagement.</li>
+            <li><strong>Opaque Operations</strong>: Order matching and liquidation processes often happen behind closed
+                doors,
+                leading to accusations of market manipulation or unfair front-running.</li>
+            <li><strong>Regulatory Friction &amp; Access</strong>: Geographical restrictions and opaque procedures
+                exclude
+                millions of potential traders from global markets.</li>
+            <li><strong>Limited Market Innovation</strong>: Traditional platforms dictate which assets can be traded,
+                stifling
+                the ability to hedge against hyper-local or unconventional risks.</li>
+        </ul>
+        <h3 id="market-gap-the-defi-alternative">Market Gap: The DeFi Alternative</h3>
+        <p>While the DeFi (Decentralized Finance) ecosystem has introduced alternatives like dYdX, GMX, and
+            Hyperliquid&#39;s
+            native perpetuals, a gap remains:</p>
+        <ul>
+            <li><strong>Rigid Asset Selection</strong>: Existing DEXs primarily focus on top-tier cryptocurrencies,
+                neglecting
+                the long tail of &quot;anything measurable.&quot;</li>
+            <li><strong>Gas Fee Volatility</strong>: Many DEXs require users to manage separate gas tokens and navigate
+                fluctuating network costs.</li>
+            <li><strong>User Agency</strong>: No platform yet offers the seamless ability for users to permissionlessly
+                create
+                and trade their own custom futures markets with institutional-grade latency.</li>
+        </ul>
+        <h3 id="the-thesis-dexetera-s-solution">The Thesis: Dexetera&#39;s Solution</h3>
+        <p>Dexetera is built on the premise that <strong>if it can be measured, it can be traded.</strong> By leveraging
+            the
+            Hyperliquid L1 blockchain, Dexetera provides a gas-free, one-click trading experience that combines the
+            speed of a
+            CEX with the transparency and self-custody of a DEX. Dexetera empowers users not just as traders, but as
+            market
+            architects, allowing for the creation of immutable, verifiable futures contracts on any data source.</p>
+        <hr>
+        <h2 id="3-platform-architecture">3. Platform Architecture</h2>
+        <h3 id="technical-stack-hyperliquid-l1-arbitrum-integration">Technical Stack: Hyperliquid L1 &amp; Arbitrum
+            Integration
+        </h3>
+        <p>Dexetera is engineered as a high-performance decentralized protocol utilizing the <strong>Hyperliquid
+                L1</strong>.
+            This specialized blockchain is optimized for an on-chain order book, providing sub-second latency and high
+            throughput. </p>
+        <ul>
+            <li><strong>L1 Performance</strong>: All order matching and settlement occur on the Hyperliquid blockchain,
+                ensuring
+                100% on-chain transparency.</li>
+            <li><strong>Cross-Chain Bridge</strong>: Users interact with the protocol using USDC on the <strong>Arbitrum
+                    network</strong>. A cross-chain infrastructure manages the seamless deposit and withdrawal of funds
+                without
+                requiring users to switch native gas tokens.</li>
+        </ul>
+        <h3 id="order-matching-throughput">Order Matching &amp; Throughput</h3>
+        <p>The protocol employs a native <strong>Order Book</strong>, which allows for:</p>
+        <ul>
+            <li><strong>Price Precision</strong>: Limited slippage and tighter spreads compared to liquidity pools.</li>
+            <li><strong>High Frequency</strong>: Support for thousands of orders per second.</li>
+            <li><strong>Latency</strong>: Near-instant execution, mimicking the feel of centralized trading interfaces.
+            </li>
+        </ul>
+        <h3 id="liquidation-engine">Liquidation Engine</h3>
+        <p>Dexetera operates without leverage, therefore liquidations are only possible for SHORT positions. When a user
+            opens a
+            SHORT position, they are essentially betting that the price of the asset will go down. If the price of the
+            asset
+            goes up more than 100%, the user&#39;s position will be liquidated.</p>
+        <h3 id="price-system-verifiable-data-sources">Price System: Verifiable Data Sources</h3>
+        <p>Information integrity is the cornerstone of Dexetera&#39;s &quot;Trade Anything&quot; model.</p>
+        <ul>
+            <li><strong>Custom Data Sources</strong>: For every market, creators must specify a publicly verifiable data
+                source
+                (URL/API) expiration date.</li>
+        </ul>
+        <h3 id="system-architecture-diagram">System Architecture Diagram</h3>
+        <pre class="mermaid">
+graph TD
+    User([User Wallet]) -- Connects via --> Frontend[Dexetera Web App]
+    Frontend -- Sends Transactions --> HL_L1[Hyperliquid L1 Blockchain]
+    HL_L1 -- Manages --> OB[On-Chain Order Book]
+    HL_L1 -- Triggers --> LiqEngine[Liquidation Engine]
+    Arbitrum[Arbitrum Network] -- USDC --> HL_L1
+    OB -- Records --> History[Immutable Trade History]
+</pre>
+        <hr>
+        <h2 id="4-product-features">4. Product Features</h2>
+        <h3 id="core-functionality">Core Functionality</h3>
+        <p>Dexetera offers a professional-grade suite of trading tools designed for both speed and strategic depth.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">Feature</th>
+                    <th style="text-align:left">Dexetera Utility</th>
+                    <th style="text-align:left">Benefit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><strong>Order Types</strong></td>
+                    <td style="text-align:left">Market, Limit, more order types will be added in the future</td>
+                    <td style="text-align:left">Precision entry and exit strategies.</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><strong>Collateral Type</strong></td>
+                    <td style="text-align:left">USDC (Self-Custody)</td>
+                    <td style="text-align:left">Stability and ease of account management.</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><strong>Risk Management</strong></td>
+                    <td style="text-align:left">Stop-Loss / Limit Orders</td>
+                    <td style="text-align:left">Automated protection without manual monitoring.</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><strong>Creation Suite</strong></td>
+                    <td style="text-align:left">User-Generated Markets</td>
+                    <td style="text-align:left">Permissionless creation of niche/local markets.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 id="trade-lifecycle-diagram">Trade Lifecycle Diagram</h3>
+        <pre class="mermaid">
+sequenceDiagram
+    participant User
+    participant Frontend
+    participant HL_L1
+    participant Oracle
+
+    User->>Frontend: Select Market / Set Order
+    Frontend->>HL_L1: Submit Gas-Free Trade
+    HL_L1->>HL_L1: Match on-chain Order Book
+    Oracle->>HL_L1: Continuous Price Update
+    HL_L1-->>User: P&L Updates (Real-time)
+    Note over HL_L1: At Expiration (1 Year)
+    Oracle->>HL_L1: Final Settlement Price
+    HL_L1->>User: Auto-Settle to USDC
+</pre>
+        <h3 id="ui-ux-differentiators">UI/UX Differentiators</h3>
+        <ul>
+            <li><strong>One-Click Trading</strong>: Elimination of repetitive wallet signatures for every order.</li>
+            <li><strong>Gas-Free Experience</strong>: The protocol abstracts blockchain complexity, paying gas fees on
+                behalf of
+                the user to ensure a seamless experience.</li>
+            <li><strong>Custom Views</strong>: Advanced charting and depth visualizations for every market, including
+                user-created ones.</li>
+        </ul>
+        <h3 id="custom-market-creation-flow">Custom Market Creation Flow</h3>
+        <pre class="mermaid">
+flowchart TD
+    A[User connects wallet] --> B[Define strategy rules]
+    B --> C[Dexetera monitors on-chain conditions]
+    C -->|Conditions met| D[Smart contract executes trade]
+    D --> E[Trade settled on DEX]
+    E --> F[Funds remain in user wallet]
+</pre>
+        <pre class="mermaid">
+graph LR
+    Creator[Market Creator] --> Define[Define Metric & Source]
+    Define --> SetParams[Set 1-Year Exp & Price]
+    SetParams --> Fee[Pay Creation Fee USDC]
+    Fee --> Deploy[Smart Contract Deployment]
+    Deploy --> Live[Market Live for Trading]
+    Live --> Earn[Creator Earns Trading Fees]
+</pre>
+        <hr>
+        <h2 id="5-economic-model-fees-sustainability-">5. Economic Model (Fees &amp; Sustainability)</h2>
+        <p>As Dexetera does not currently employ a native utility token, its economic sustainability is driven by a
+            transparent
+            fee structure that ensures platform maintenance and rewards market innovation.</p>
+        <h3 id="fee-structure">Fee Structure</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align:left">Action</th>
+                    <th style="text-align:left">Calculation Base</th>
+                    <th style="text-align:left">Logic</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="text-align:left"><strong>Opening Trade</strong></td>
+                    <td style="text-align:left">Notional Position Value</td>
+                    <td style="text-align:left">Deducted from collateral upon entry.</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><strong>Closing Trade</strong></td>
+                    <td style="text-align:left">Notional Position Value</td>
+                    <td style="text-align:left">Adjusted against final P&amp;L.</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><strong>Roll-Over</strong></td>
+                    <td style="text-align:left">Notional Position Value</td>
+                    <td style="text-align:left">Applied when extending a 1-year contract.</td>
+                </tr>
+                <tr>
+                    <td style="text-align:left"><strong>Market Creation</strong></td>
+                    <td style="text-align:left">Flat USDC Fee</td>
+                    <td style="text-align:left">One-time cost to initialize a new custom market.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 id="revenue-distribution">Revenue Distribution</h3>
+        <p>The fees collected by the protocol are architected to support the ecosystem:</p>
+        <ol>
+            <li><strong>Protocol Treasury</strong>: Funds continuous development, L1 validator costs, and
+                infrastructure.</li>
+            <li><strong>Market Creator Rewards</strong>: A portion of trading fees from user-created markets is directed
+                to the
+                original creator, incentivizing the onboarding of high-quality, unique data feeds.</li>
+        </ol>
+        <hr>
+        <h2 id="6-security-risk-management">6. Security &amp; Risk Management</h2>
+        <h3 id="smart-contract-integrity">Smart Contract Integrity</h3>
+        <ul>
+            <li><strong>Audit Framework</strong>: Dexetera enters the market with a &quot;Security-First&quot; approach.
+                Smart
+                contracts are subject to rigorous internal testing and scheduled third-party audits (Planned for Q2
+                2026).</li>
+            <li><strong>Open Source</strong>: The protocol&#39;s codebase is public and verifiable, allowing for
+                community-driven bug bounties and independent verification of all logic.</li>
+            <li><strong>Withdrawal Transparency</strong>: Since all funds are in USDC and self-custodied via smart
+                contracts on
+                Hyperliquid, users can always track their bridge-out status on-chain.</li>
+        </ul>
+        <hr>
+        <h2 id="7-roadmap">7. Roadmap</h2>
+        <p>Dexetera follows a phased development cycle focused on stability before expansion.</p>
+        <h3 id="phase-1-foundation-q1-q2-2026-">Phase 1: Foundation (Q1 - Q2 2026)</h3>
+        <ul>
+            <li>[x] Initial Core Protocol Deployment on Hyperliquid Testnet.</li>
+            <li>[ ] Beta User Onboarding &amp; Feedback Loop.</li>
+            <li>[ ] Completion of External Smart Contract Audits.</li>
+            <li>[ ] Mainnet Launch (Initial list of 20+ markets).</li>
+        </ul>
+        <h3 id="phase-2-expansion-tooling-q3-q4-2026-">Phase 2: Expansion &amp; Tooling (Q3 - Q4 2026)</h3>
+        <ul>
+            <li>[ ] <strong>Advanced Features</strong>: Implementation of trailing stops and multi-collateral support
+                (if
+                applicable).</li>
+            <li>[ ] <strong>Market Creator Studio</strong>: Enhanced UI for one-click creation of complex futures
+                contracts.
+            </li>
+            <li>[ ] <strong>Mobile Integration</strong>: Launch of a high-performance progressive web app (PWA) and
+                dedicated
+                mobile interface.</li>
+        </ul>
+        <h3 id="phase-3-decentralization-ecosystem-2027-">Phase 3: Decentralization &amp; Ecosystem (2027+)</h3>
+        <ul>
+            <li>[ ] <strong>Governance Alpha</strong>: Transitioning protocol parameters (fee levels, market listings)
+                to a
+                decentralized voting mechanism.</li>
+            <li>[ ] <strong>SDK / API Access</strong>: Allowing institutional partners and algorithmic traders to build
+                directly
+                on top of Dexetera&#39;s infrastructure.</li>
+            <li>[ ] <strong>Cross-Chain Expansion</strong>: Integration with additional Layer 2 networks for collateral
+                deposits.</li>
+        </ul>
+        <hr>
+        <h2 id="8-team-advisors">8. Team &amp; Advisors</h2>
+        <p>Dexetera is developed by a global collective of engineers and financial technologists committed to the
+            principles of
+            decentralization and financial sovereignty.</p>
+        <h3 id="background">Background</h3>
+        <p>The core development team consists of veterans from the blockchain and high-frequency trading sectors, with
+            prior
+            experience at major DeFi protocols and traditional financial institutions. </p>
+        <h3 id="accountability-pseudonymity">Accountability &amp; PSEUDONYMITY</h3>
+        <p>While some team members operate under pseudonyms to align with the cypherpunk roots of the DeFi ecosystem,
+            accountability is maintained through:</p>
+        <ul>
+            <li><strong>On-Chain Track Record</strong>: Proof of work via public GitHub contributions and previous
+                protocol
+                deployments.</li>
+            <li><strong>Transparent Governance</strong>: A commitment to transitioning all critical protocol decisions
+                to a
+                decentralized autonomous structure.</li>
+        </ul>
+        <hr>
+        <h2 id="9-legal-compliance">9. Legal &amp; Compliance</h2>
+        <h3 id="jurisdictions-restrictions">Jurisdictions &amp; Restrictions</h3>
+        <p>Dexetera is a decentralized protocol. Access to the frontend interface may be restricted in certain
+            jurisdictions
+            based on local regulatory frameworks. Users are responsible for ensuring their participation complies with
+            the laws
+            of their respective regions.</p>
+        <h3 id="regulatory-stance">Regulatory Stance</h3>
+        <p>The protocol is designed as a technological primitive for decentralized trading. Dexetera does not issue a
+            native
+            security token. All fees are transaction-based utilities intended for protocol sustainability and
+            infrastructure
+            maintenance.</p>
+        <h3 id="disclaimer">Disclaimer</h3>
+        <p>Trading cryptocurrencies and futures involves significant risk of loss and is not suitable for every
+            investor. The
+            valuation of futures contracts may fluctuate, and as a result, clients may lose more than their original
+            investment.
+            Dexetera is provided &quot;as is&quot; without warranties of any kind. </p>
+        <hr>
+        <h2 id="10-conclusion">10. Conclusion</h2>
+        <p>Dexetera represents a new innovative option for decentralized trading. By moving beyond the limitations of
+            centralized intermediaries and the rigidity of early-stage DEXs, we have created a platform that is fast,
+            transparent, and truly permissionless. </p>
+        <p>Whether you are a professional trader seeking institutional-grade latency or a market architect looking to
+            create
+            exposure for niche metrics, Dexetera provides the tools to trade anything measurable.</p>
+        <h3 id="call-to-action">Call to Action</h3>
+        <ul>
+            <li><strong>Join the Waitlist</strong>: Be among the first to experience gas-free trading on Mainnet.</li>
+            <li><strong>Join the Community</strong>: Participate in discussions on Discord and Twitter to help shape the
+                future
+                of the protocol.</li>
+            <li><strong>Build with Us</strong>: Explore our open-source repositories and start architecting your own
+                markets
+                today.</li>
+        </ul>
+        <p><strong>Dexetera: Trade Anything, Anywhere.</strong></p>
+    </main>
+
+    <footer class="footer">
+      <div style="max-width: 1280px; margin: 0 auto; padding: 0 2rem;">
+        <div style="display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap; border-top: 1px solid var(--border); padding-top: 2rem; margin-bottom: 2rem;">
+          <span style="color: var(--muted);">© 2024 Dexetera. All rights reserved.</span>
+          <span style="color: var(--muted); display:flex; gap: 1rem; flex-wrap: wrap;">
+             <a href="index.html">Home</a> · <a href="markets.html">Markets</a> · <a href="about.html">About Us</a> · <a href="security.html">Security</a> · <a href="whitepaper.html">Whitepaper</a> · <a href="https://doc.dexetera.win">Docs</a> · <a href="dexetera-tos.html">Terms</a> · <a href="dexetera-privacy.html">Privacy</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default',
+            securityLevel: 'loose',
+            flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' },
+        });
+
+        const themeToggle = document.querySelector('.theme-toggle');
+        const root = document.documentElement;
+
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        root.setAttribute('data-theme', currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+          const theme = root.getAttribute('data-theme');
+          const newTheme = theme === 'dark' ? 'light' : 'dark';
+          root.setAttribute('data-theme', newTheme);
+          localStorage.setItem('theme', newTheme);
+        });
+    </script>
+</body>
+
+</html>

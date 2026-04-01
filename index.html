@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Dexetera: Gas-Free DEX on Hyperliquid | Trade Custom Futures</title>
+  <meta name="title" content="Dexetera: Gas-Free DEX on Hyperliquid | Trade Custom Futures">
+  <link rel="canonical" href="https://dexetera.org/">
+  <meta name="description"
+    content="Trade any measurable market on Dexetera: gas-free DEX on Hyperliquid. Custom futures, on-chain order book, USDC self-custody. Your keys, unlimited markets." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <meta name="author" content="Dexetera Labs">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dexetera.org/">
+  <meta property="og:title" content="Dexetera: Gas-Free DEX on Hyperliquid">
+  <meta property="og:description" content="Trade any measurable market with zero gas fees. Custom futures, complete decentralization, USDC self-custody.">
+  <meta property="og:image" content="https://dexetera.org/og-image.png">
+  <meta property="og:site_name" content="Dexetera">
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://dexetera.org/">
+  <meta property="twitter:title" content="Dexetera: Gas-Free DEX on Hyperliquid">
+  <meta property="twitter:description" content="Trade any measurable market with zero gas fees. Custom futures, complete decentralization, USDC self-custody.">
+  <meta property="twitter:image" content="https://dexetera.org/twitter-image.png">
+  <meta property="twitter:site" content="@DexeteraLabs">
+  <!-- Mobile -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <!-- SEO & AI Visibility JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://dexetera.org/#organization",
+        "name": "Dexetera",
+        "url": "https://dexetera.org",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://dexetera.org/logo.svg"
+        },
+        "description": "Decentralized exchange enabling trading of any measurable market through custom futures contracts on Hyperliquid",
+        "foundingDate": "2024",
+        "industry": "Decentralized Finance",
+        "knowsAbout": [
+          "Decentralized Finance",
+          "Cryptocurrency Trading",
+          "Futures Contracts",
+          "Blockchain Technology",
+          "DeFi Protocols"
+        ],
+        "email": "support@dexetera.org",
+        "sameAs": [
+          "https://twitter.com/Dexetera",
+          "https://github.com/Dexetera"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://dexetera.org/#website",
+        "url": "https://dexetera.org",
+        "name": "Dexetera",
+        "description": "Trade any measurable market on Dexetera: gas-free DEX on Hyperliquid. Custom futures, on-chain order book, USDC self-custody.",
+        "publisher": {
+          "@id": "https://dexetera.org/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://dexetera.org/markets.html?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://dexetera.org/#webpage",
+        "url": "https://dexetera.org/",
+        "name": "Dexetera: Gas-Free DEX on Hyperliquid | Trade Custom Futures",
+        "description": "Trade any measurable market on Dexetera: gas-free DEX on Hyperliquid. Custom futures, on-chain order book, USDC self-custody. Your keys, unlimited markets.",
+        "isPartOf": { "@id": "https://dexetera.org/#website" },
+        "about": { "@id": "https://dexetera.org/#organization" },
+        "datePublished": "2024-01-01",
+        "dateModified": "2026-03-31"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://dexetera.org/#application",
+        "name": "Dexetera DEX",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web Browser",
+        "url": "https://dexetera.org",
+        "description": "Decentralized exchange for trading custom futures contracts on any measurable market with gas-free execution on Hyperliquid",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "Free to use platform with 0.07% taker and 0.03% maker trading fees"
+        },
+        "featureList": [
+          "Custom futures contract creation",
+          "Gas-free trading on Hyperliquid",
+          "Self-custody USDC settlement",
+          "AI-validated data sources",
+          "Fully on-chain order book",
+          "1-year contract expirations"
+        ],
+        "provider": { "@id": "https://dexetera.org/#organization" }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://dexetera.org/#faq",
+        "isPartOf": { "@id": "https://dexetera.org/#webpage" },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What markets can I trade on Dexetera?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dexetera allows you to trade any verifiable, measurable market. This includes traditional assets like cryptocurrencies, commodities, and stocks, as well as custom futures contracts you can create yourself. If there's a reliable data source for it, you can trade it on Dexetera."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How can Dexetera offer gas-free trading?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dexetera leverages Hyperliquid's high-speed infrastructure to offer gas-free trading. We've optimized our smart contracts and use meta-transactions to cover gas costs, allowing you to execute trades with just one click, without worrying about gas fees."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Dexetera really decentralized?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, Dexetera is fully decentralized. We don't have access to your funds, there are no middlemen. The platform operates with a fully on-chain order book, and all trades are settled directly on the Hyperliquid blockchain."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I create a custom market?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Creating a custom market on Dexetera is simple. You'll need to define the underlying asset or metric you want to trade, set the contract parameters (including the 1-year expiration), and specify the data source that will be used for settlement. Our interface guides you through the process step-by-step."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which currency can I use to trade on Dexetera?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can deposit USDC on the Arbitrum network to trade on Dexetera. We support USDC as our primary trading currency to ensure stability and liquidity."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does settlement work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "All trades on Dexetera are settled on-chain through smart contracts. When a futures contract expires, it automatically settles based on the verifiable data source you specified when creating the market. Settlement is transparent, automatic, and recorded on the Hyperliquid blockchain for anyone to verify."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the trading fees on Dexetera?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Dexetera charges a maker fee of 0.03% and a taker fee of 0.07%. All trades are gas-free thanks to our integration with Hyperliquid's infrastructure, and all settlements are in USDC."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="navbar">
+      <div class="navbar-inner">
+        <a href="index.html" style="text-decoration: none; color: inherit;">
+          <div class="nav-left">
+            <div class="brand-mark"><img src="logo.svg" alt="Dexetera Logo" /></div>
+            <div class="brand-text">Dexetera</div>
+          </div>
+        </a>
+        <nav class="nav-links">
+          <a href="index.html" class="active">Home</a>
+          <a href="markets.html">Markets</a>
+          <a href="about.html">About Us</a>
+          <a href="security.html">Security</a>
+          <a href="whitepaper.html">Whitepaper</a>
+        </nav>
+        <div class="nav-right">
+          <button class="theme-toggle" aria-label="Toggle theme">
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+          <a href="https://doc.dexetera.win"><button class="nav-ghost">Docs</button></a>
+          <a href="https://dexetera.xyz" class="nav-cta" target="_blank" rel="noopener">Launch App</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="eyebrow-pill">Live on Hyperliquid</span>
+            <span>Instant · Gas-Free · Seamless Trading</span>
+          </div>
+          <h1>Trade <span>Anything Measurable</span>. Create <span>Your Own Markets</span>.</h1>
+          <p class="hero-sub">
+            Dexetera lets you trade any verifiable market imaginable: From global commodities and stocks to hyper-local
+            metrics. Create your own custom futures contracts (1-year expiration) and experience truly gas-free,
+            one-click trading with USDC. Fully decentralized. No middleman. No company can access your funds.
+          </p>
+          <div class="hero-ctas">
+            <a href="https://dexetera.org/wl?utm_source=hero" class="btn-primary">Join the waitlist</a>
+            <button class="btn-secondary">Explore Markets →</button>
+          </div>
+          <div class="hero-meta">
+            <span style="display:none">
+              <span><strong>$480M+</strong> 24h volume</span>
+            </span>
+            <span><strong>99.98%</strong> uptime</span>
+            <span><strong>0 gas</strong> on every trade · Fully On-chain Order Book</span>
+          </div>
+        </div>
+
+        <aside class="hero-visual" aria-label="Trading interface preview">
+          <div class="badge-row">
+            <span class="chain-pill">Hyperliquid</span>
+            <span class="tag-pill">Cross‑margin · Perps</span>
+          </div>
+          <div class="order-book">
+            <div class="panel">
+              <div class="panel-header">
+                <div>
+                  <div class="market-name">ETH‑PERP / USDC</div>
+                  <div class="small-label">Order book</div>
+                </div>
+                <div>
+                  <div class="price up">$3,487.25</div>
+                  <div class="small-label">+2.4% · 24h</div>
+                </div>
+              </div>
+              <div class="chart">
+                <div class="chart-line"></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <span class="small-label">Depth · Top of book</span>
+                <span class="small-label">Size (ETH)</span>
+              </div>
+              <div class="depth-list">
+                <div class="depth-row">
+                  <div class="depth-cell ask">3,488.1</div>
+                  <div class="depth-cell ask">12.4</div>
+                  <div class="depth-cell ask">–$1.2k</div>
+                </div>
+                <div class="depth-row">
+                  <div class="depth-cell ask">3,487.9</div>
+                  <div class="depth-cell ask">6.9</div>
+                  <div class="depth-cell ask">–$0.8k</div>
+                </div>
+                <div class="depth-row">
+                  <div class="depth-cell bid">3,487.2</div>
+                  <div class="depth-cell bid">14.1</div>
+                  <div class="depth-cell bid">+$2.1k</div>
+                </div>
+                <div class="depth-row">
+                  <div class="depth-cell bid">3,486.9</div>
+                  <div class="depth-cell bid">9.7</div>
+                  <div class="depth-cell bid">+$1.3k</div>
+                </div>
+              </div>
+              <div class="tickets">
+                <div class="ticket">
+                  <strong>Position</strong>
+                  Long 12.5 ETH · 3,402.1<br />
+                  <span>Unrealized PnL · +$1,065</span>
+                </div>
+                <div class="ticket">
+                  <strong>Risk</strong>
+                  Leverage · 4.2×<br />
+                  <span>Est. liq · $2,910</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="section hero-definition" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h1>What is Dexetera?</h1>
+        <p><strong>Dexetera is a gas-free decentralized exchange (DEX) built on Hyperliquid that enables trading of any measurable market.</strong> Unlike traditional DEXs limited to crypto pairs, Dexetera allows users to create and trade custom futures contracts for real-world data like house prices, commodity costs, or social media metrics with complete self-custody and zero gas fees.</p>
+      </section>
+
+      <!-- VALUE PROPS -->
+      <section id="features" class="section">
+        <div class="section-header">
+          <h2 class="section-title">What makes Dexetera different from other DEXs?</h2>
+          <p class="section-kicker">
+            Explore the freedom to trade anything, create markets, and execute with hyper speed and transparency.
+          </p>
+        </div>
+        <div class="value-grid">
+          <article class="card">
+            <span class="card-badge">Unrestricted Markets</span>
+            <h3>Trade What You Believe In.</h3>
+            <p>
+              From traditional assets to unique, real-world metrics, Dexetera lets you trade any verifiable data point.
+              If it's measurable, you can trade it.
+            </p>
+            <ul>
+              <li>Commodities, Stocks, Indexes & Beyond</li>
+              <li>Create Your Own Custom Futures Contracts</li>
+              <li>Futures with 1-Year Expiration</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="card-badge">True Decentralization</span>
+            <h3>Your Capital, Your Control.</h3>
+            <p>
+              Enjoy a trading ecosystem free from traditional intermediaries. No investors, no paid market makers, no
+              company in control of your funds.
+            </p>
+            <ul>
+              <li>Fully On-chain Order Book</li>
+              <li>Gas-Free, One-Click Trading on Hyperliquid blockchain</li>
+              <li>Trade in USDC with Self-Custody</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="card-badge">Complete Transparency</span>
+            <h3>Verifiable On-Chain Everything.</h3>
+            <p>
+              Every trade. All funding events. Any liquidation. All is transparently recorded and settled on the
+              blockchain, to ensure complete auditability.
+            </p>
+            <ul>
+              <li>Immutable On-Chain History</li>
+              <li>Publicly Verifiable Operations</li>
+              <li>Seamless Wallet Integration</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="quickstart" class="section">
+        <div class="section-header">
+          <h2>How can I start trading?</h2>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Connect Wallet</h3>
+            <p>Connect MetaMask or a compatible wallet. No signup required.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>Deposit USDC</h3>
+            <p>Transfer USDC from Arbitrum. No approvals needed.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Trade Instantly</h3>
+            <p>Select or create your market. Place orders with one click, no gas fees.</br> You keep the custody of your
+              funds.
+          </article>
+        </div>
+      </section>
+
+
+      <!-- METRICS -->
+      <!--  <section id="metrics" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Live protocol metrics</h2>
+          <p class="section-kicker">
+            Real usage, not vanity numbers.
+          </p>
+        </div>
+        <div class="metrics">
+          <div class="metric">
+            <div class="metric-label">24h volume</div>
+            <div class="metric-value">$482,917,230</div>
+            <div class="metric-trend">+18.3% vs. yesterday</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Open interest</div>
+            <div class="metric-value">$196,204,110</div>
+            <div class="metric-trend">Across all perp markets</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Unique wallets</div>
+            <div class="metric-value">31,284</div>
+            <div class="metric-trend">Connected over last 30 days</div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Uptime</div>
+            <div class="metric-value">99.98%</div>
+            <div class="metric-trend">Monitored continuously</div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- HOTTEST MARKETS -->
+      <!--  <section id="markets" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Hottest Markets</h2>
+          <p class="section-kicker">
+            Explore the most active markets on Dexetera
+          </p>
+        </div>
+        <div class="markets-grid">
+          <article class="market-card">
+            <div class="market-info">
+              <div class="market-name">BTC-PERP / USDC</div>
+              <div class="market-price">$63,245.12</div>
+              <div class="market-change up">+3.2%</div>
+            </div>
+            <a class="market-action" href="https://dexetera.xyz">Launch App</a>
+          </article>
+          <article class="market-card">
+            <div class="market-info">
+              <div class="market-name">ETH-PERP / USDC</div>
+              <div class="market-price">$3,487.25</div>
+              <div class="market-change up">+2.4%</div>
+            </div>
+            <a class="market-action" href="https://dexetera.xyz">Launch App</a>
+          </article>
+          <article class="market-card">
+            <div class="market-info">
+              <div class="market-name">SOL-PERP / USDC</div>
+              <div class="market-price">$142.89</div>
+              <div class="market-change down">-1.8%</div>
+            </div>
+            <a class="market-action" href="https://dexetera.xyz">Launch App</a>
+          </article>
+          <article class="market-card">
+            <div class="market-info">
+              <div class="market-name">GOLD-PERP / USDC</div>
+              <div class="market-price">$2,389.45</div>
+              <div class="market-change up">+0.9%</div>
+            </div>
+            <a class="market-action" href="https://dexetera.xyz">Launch App</a>
+          </article>
+        </div>
+      </section> -->
+
+      <!-- HOW IT WORKS -->
+      <section id="how-it-works" class="section">
+        <div class="section-header">
+          <h2 class="section-title">How does gas-free trading work on Dexetera?</h2>
+          <p class="section-kicker">
+            Trade any market, gas-free, and with complete transparency
+          </p>
+        </div>
+        <div class="how-it-works-grid">
+          <article class="how-it-works-card">
+            <div class="how-it-works-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 7h-9"></path>
+                <path d="M11 17H2"></path>
+                <path d="M20 7l-5 5"></path>
+                <path d="M4 17l5-5"></path>
+                <path d="M12 2v20"></path>
+              </svg>
+            </div>
+            <h3>Create or Choose Markets</h3>
+            <p>Trade any verifiable market, from traditional assets to your own custom futures contracts.</p>
+          </article>
+          <article class="how-it-works-card">
+            <div class="how-it-works-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </div>
+            <h3>Trade Gas-Free</h3>
+            <p>Execute trades with one click. No gas fees. No waiting. Powered by Hyperliquid's high-speed
+              infrastructure.</p>
+          </article>
+          <article class="how-it-works-card">
+            <div class="how-it-works-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <h3>Settle On-Chain</h3>
+            <p>Every trade, funding event, and liquidation is transparently recorded and settled on the blockchain.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- COMPARISON TABLE -->
+      <section id="comparison" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Dexetera: The Future of Decentralized Trading</h2>
+          <p class="section-kicker">
+            Unlock unlimited markets and true financial freedom. Without compromise.
+          </p>
+        </div>
+        <div class="table-wrapper">
+          <table aria-label="Exchange comparison">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Custody</th>
+                <th>Transparency & Markets</th>
+                <th>Markets</th>
+                <th>Gas Fees</th>
+                <th>Do you own your keys?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 800">Dexetera</td>
+                <td><span class="pill-good">Self‑custody</span></td>
+                <td><span class="pill-good">Fully On-chain</span></td>
+
+                <td><span class="pill-good">User-Created Markets</span></td>
+                <td><span class="pill-good">Zero</span></td>
+                <td><span class="pill-good">Yes</span></td>
+              </tr>
+              <tr>
+                <td>Major CEX (Binance, Bybit, Crypto.com, Coinbase...)</td>
+                <td><span class="pill-bad">Exchange custody</span></td>
+                <td>Opaque matching</td>
+                <td>Limited Markets</td>
+                <td>Varies</td>
+                <td><span class="pill-bad">No</span></td>
+              </tr>
+              <tr>
+                <td>Legacy DEX</td>
+                <td><span class="pill-good">Self‑custody</span></td>
+
+                <td>On‑chain</td>
+                <td>Fixed Markets</td>
+                <td>Standard (Varies)</td>
+                <td><span class="pill-good">Yes</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECURITY & TRUST -->
+      <section id="security" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Security & Trust</h2>
+          <p class="section-kicker">
+            Built on transparency, self-custody, and blockchain verifiability.
+          </p>
+        </div>
+        <div class="security-grid">
+          <article class="security-card">
+            <div class="security-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 13c.5-2.5-2.5-4-5-4-2.8 0-5 2.2-5 5s2.2 5 5 5c2.5 0 5.5-1.5 5-4z"></path>
+                <path d="M12 22V12"></path>
+              </svg>
+            </div>
+            <h3>Self-Custody</h3>
+            <p>Your funds remain yours at all times. No exchange custody, no withdrawal limits, no restrictions.</p>
+          </article>
+          <article class="security-card">
+            <div class="security-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            </div>
+            <h3>On-Chain Transparency</h3>
+            <p>Every trade. All funding events. Any liquidation. All recorded on-chain and publicly verifiable.</p>
+          </article>
+          <article class="security-card">
+            <div class="security-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14,2 14,8 20,8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10,9 9,9 8,9"></polyline>
+              </svg>
+            </div>
+            <h3>Open and Traceable</h3>
+            <p>Fully open-source codebase.All transactions and contract interactions are traceable on Hyperliquid.</p>
+          </article>
+        </div>
+        <div class="security-footer">
+          <p>Dexetera is built on the security of Hyperliquid and the transparency of blockchain technology.</p>
+          <a href="#" class="security-link">Learn more about our security policy →</a>
+        </div>
+      </section>
+
+      <!-- FOOTER CTA -->
+      <section id="trade-now" class="section">
+        <div class="footer-cta">
+          <div>
+            <h3 class="section-title">Ready for True Decentralized Trading?</h3>
+            <p>
+              Connect your wallet in seconds and immediately start trading on any market, gas-free. No accounts. No
+              approvals. No limits.
+            </p>
+          </div>
+          <div class="hero-ctas">
+            <a href="https://dexetera.org/wl?utm_source=footer" class="btn-primary">Join the waitlist!</a>
+            <button class="btn-secondary">Join the Community →</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESEARCH & TEAM -->
+      <section id="research-team" class="section" itemscope itemtype="https://schema.org/AboutPage">
+        <div class="section-header">
+          <h2 class="section-title">Backed by Research & Built by Experts</h2>
+          <p class="section-kicker">
+            Integrating academic research with decentralized trading architecture.
+          </p>
+        </div>
+        <div class="team-grid"
+          style="display:flex; gap:2rem; flex-wrap:wrap; justify-content:center; margin-bottom: 2rem;">
+          <article class="team-member" itemprop="author" itemscope itemtype="https://schema.org/Person"
+            style="text-align:center; flex: 1; min-width: 250px; max-width: 300px; padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--panel-bg);">
+            <div
+              style="width: 80px; height: 80px; border-radius: 50%; background: #2a2a2a; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+              👤</div>
+            <h3 itemprop="name">Richard</h3>
+            <p itemprop="jobTitle" style="color: var(--text-muted); margin-bottom: 0.5rem;">Protocol Architect</p>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--text-color);">Expert in Distributed Systems &
+              Smart Contract Security.</p>
+            <a itemprop="sameAs" href="https://linkedin.com/" target="_blank" rel="noopener"
+              style="color: var(--primary); text-decoration: none; font-weight: 500;">LinkedIn Profile →</a>
+          </article>
+          <article class="team-member" itemprop="author" itemscope itemtype="https://schema.org/Person"
+            style="text-align:center; flex: 1; min-width: 250px; max-width: 300px; padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--panel-bg);">
+            <div
+              style="width: 80px; height: 80px; border-radius: 50%; background: #2a2a2a; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+              👤</div>
+            <h3 itemprop="name">Dexter</h3>
+            <p itemprop="jobTitle" style="color: var(--text-muted); margin-bottom: 0.5rem;">Lead Developer</p>
+            <p style="font-size: 0.9rem; margin-bottom: 1rem; color: var(--text-color);">Specialist in high-performance
+              trading engines and quantitative analysis.</p>
+            <a itemprop="sameAs" href="https://linkedin.com/" target="_blank" rel="noopener"
+              style="color: var(--primary); text-decoration: none; font-weight: 500;">LinkedIn Profile →</a>
+          </article>
+        </div>
+        <div class="citations-box"
+          style="background:var(--panel-bg); border: 1px solid var(--border-color); padding:1.5rem; border-radius:12px; font-size: 0.9rem; max-width: 800px; margin: 0 auto;">
+          <h3 style="margin-bottom:1rem; font-size: 1.2rem;">References & Regulatory Alignment</h3>
+          <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-muted);">
+            <li style="margin-bottom: 0.75rem;">
+              <span style="color: var(--text-color);">1. Cryptographic Scaling:</span> Our architecture draws
+              inspiration from advanced cryptographic research on rollup designs. Reference: <cite><a
+                  href="https://arxiv.org/abs/2103.00020" target="_blank" rel="noopener"
+                  style="color: var(--primary); text-decoration: none;">"ZK-Rollups and their Applications"
+                  (arXiv:2103.00020)</a></cite>.
+            </li>
+            <li>
+              <span style="color: var(--text-color);">2. Regulatory Compliance:</span> We adhere to principles aligning
+              with transparent, verifiable decentralized architectures as discussed in regulatory guidelines. Reference:
+              <cite><a href="https://www.sec.gov/news/press-release/2020-146" target="_blank" rel="noopener"
+                  style="color: var(--primary); text-decoration: none;">SEC Guidance on Digital Assets</a></cite>.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="section">
+        <div class="section-header">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-kicker">
+            Answers to common questions about trading on Dexetera
+          </p>
+        </div>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>What markets can I trade on Dexetera?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12" y2="16"></line>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Dexetera allows you to trade any verifiable, measurable market. This includes traditional assets like
+                cryptocurrencies, commodities, and stocks, as well as custom futures contracts you can create yourself.
+                If there's a reliable data source for it, you can trade it on Dexetera.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How can Dexetera offer gas-free trading?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12" y2="16"></line>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Dexetera leverages Hyperliquid's high-speed infrastructure to offer gas-free trading. We've optimized
+                our smart contracts and use meta-transactions to cover gas costs, allowing you to execute trades with
+                just one click, without worrying about gas fees.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Is Dexetera really decentralized?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12" y2="16"></line>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Yes, Dexetera is fully decentralized. We don't have access to your funds, there are no middlemen. The
+                platform operates with a fully on-chain order book, and all trades are settled directly on the
+                Hyperliquid blockchain.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How do I create a custom market?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12" y2="16"></line>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>Creating a custom market on Dexetera is simple. You'll need to define the underlying asset or metric
+                you want to trade, set the contract parameters (including the 1-year expiration), and specify the data
+                source that will be used for settlement. Our interface guides you through the process step-by-step.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Which currency can I use to trade on Dexetera?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12" y2="16"></line>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>You can deposit USDC on the Arbitrum network to trade on Dexetera. We support USDC as our primary
+                trading currency to ensure stability and liquidity.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>How does settlement work?</span>
+              <svg class="faq-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12" y2="16"></line>
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>All trades on Dexetera are settled on-chain through smart contracts. When a futures contract expires,
+                it automatically settles based on the verifiable data source you specified when creating the market.
+                Settlement is transparent, automatic, and recorded on the Hyperliquid blockchain for anyone to verify.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div style="max-width: 1280px; margin: 0 auto; padding: 2rem 1rem;">
+        <div class="contact-info" style="margin-bottom: 2rem; display: flex; gap: 2rem; flex-wrap: wrap;">
+          <div>
+            <h3>Contact Dexetera</h3>
+            <p><strong>Email:</strong> support@dexetera.org</p>
+            <p><strong>Business Inquiries:</strong> partnerships@dexetera.org</p>
+            <p><strong>Security:</strong> security@dexetera.org</p>
+            <p><strong>Social:</strong> <a href="https://twitter.com/Dexetera" style="color: var(--primary);">@DexeteraLabs</a></p>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap; border-top: 1px solid var(--border-color); padding-top: 2rem;">
+          <span style="color: var(--muted);">© 2024 Dexetera. All rights reserved.</span>
+          <span style="color: var(--muted); display:flex; gap: 1rem; flex-wrap: wrap;">
+             <a href="index.html">Home</a> · <a href="markets.html">Markets</a> · <a href="about.html">About Us</a> · <a href="security.html">Security</a> · <a href="whitepaper.html">Whitepaper</a> · <a href="https://doc.dexetera.win">Docs</a> · <a href="dexetera-tos.html">Terms</a> · <a href="dexetera-privacy.html">Privacy</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function () { if (!window.chatbase || window.chatbase("getState") !== "initialized") { window.chatbase = (...arguments) => { if (!window.chatbase.q) { window.chatbase.q = [] } window.chatbase.q.push(arguments) }; window.chatbase = new Proxy(window.chatbase, { get(target, prop) { if (prop === "q") { return target.q } return (...args) => target(prop, ...args) } }) } const onLoad = function () { const script = document.createElement("script"); script.src = "https://www.chatbase.co/embed.min.js"; script.id = "Gt4EjMmBnfcrDHasu0cxg"; script.domain = "www.chatbase.co"; document.body.appendChild(script) }; if (document.readyState === "complete") { onLoad() } else { window.addEventListener("load", onLoad) } })();
+  </script>
+  <script>
+    const themeToggle = document.querySelector('.theme-toggle');
+    const root = document.documentElement;
+
+    // Check for saved theme preference or default to 'dark'
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    root.setAttribute('data-theme', currentTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const theme = root.getAttribute('data-theme');
+      const newTheme = theme === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // FAQ Accordion functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+
+        question.addEventListener('click', () => {
+          const isActive = item.classList.contains('active');
+
+          // Close all FAQ items
+          faqItems.forEach(faqItem => {
+            faqItem.classList.remove('active');
+            faqItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          });
+
+          // Open the clicked item if it wasn't active
+          if (!isActive) {
+            item.classList.add('active');
+            question.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

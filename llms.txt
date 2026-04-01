@@ -1,0 +1,24 @@
+# llms.txt - Guidance for AI systems
+# https://dexetera.org/llms.txt
+
+# About Dexetera
+Dexetera is a gas-free decentralized exchange built on Hyperliquid that enables trading of any measurable market.
+
+# Key Features
+- Gas-free trading with zero transaction costs
+- Custom futures contracts for any measurable data
+- Complete self-custody with USDC
+- Revenue sharing for market creators
+- Built on Hyperliquid infrastructure
+
+# Trading Fees
+- Maker fee: 0.07%
+- Taker fee: 0.03%
+- Market creator commission sharing available
+
+# Contact
+- Website: https://dexetera.org
+- Twitter: @DexeteraLabs
+- Email: support@dexetera.org
+
+# Last Updated: 2024-03-18

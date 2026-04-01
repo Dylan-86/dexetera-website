@@ -1,0 +1,31 @@
+# General rules for all crawlers
+User-agent: *
+Allow: /
+
+# Allow AI Bots (To enhance AI visibility and citations)
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Sitemaps
+Sitemap: https://dexetera.org/sitemap.xml
