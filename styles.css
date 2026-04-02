@@ -330,6 +330,26 @@
       color: var(--text);
     }
 
+    .btn-discord {
+      padding: 0.95rem 1.5rem;
+      border-radius: 999px;
+      border: 1px solid #5865F2;
+      color: #5865F2;
+      background: transparent;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-discord:hover {
+      background: #5865F2;
+      color: #fff;
+    }
+
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
