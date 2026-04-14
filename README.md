@@ -4,7 +4,7 @@
 
 **Dexetera** is a high-performance, fully decentralized exchange (DEX) built on the [Hyperliquid L1](https://hyperliquid.xyz) blockchain. It enables gas-free, one-click trading of custom futures contracts on *any verifiable data source* — from crypto assets and commodities to real estate indices, social metrics, and local economic data.
 
-**Live platform:** [dexetera.xyz](https://dexetera.xyz) · **Website:** [dexetera.org](https://dexetera.org) · **Docs:** [doc.dexetera.win](https://doc.dexetera.win)
+**Live platform:** [dexetera.xyz](https://dexetera.xyz) · **Website:** [dexetera.org](https://dexetera.org) · **Docs:** [doc.dexetera.org](https://doc.dexetera.org)
 
 ---
 
@@ -246,7 +246,7 @@ Dexetera is a decentralized protocol. Access to the frontend may be restricted i
 |---|---|
 | **Platform** | [dexetera.xyz](https://dexetera.xyz) |
 | **Website** | [dexetera.org](https://dexetera.org) |
-| **Docs** | [doc.dexetera.win](https://doc.dexetera.win) |
+| **Docs** | [doc.dexetera.org](https://doc.dexetera.org) |
 | **Whitepaper** | [dexetera.org/whitepaper.html](https://dexetera.org/whitepaper.html) |
 | **Twitter / X** | [@DexeteraLabs](https://twitter.com/DexeteraLabs) |
 | **GitHub** | [github.com/Dexetera](https://github.com/Dexetera) |
