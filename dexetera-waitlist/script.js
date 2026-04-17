@@ -35,6 +35,7 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
             responseMsg.innerText = "Great! You've been added to the priority list.";
             responseMsg.className = "success";
             document.getElementById('waitlist-form').reset();
+            document.getElementById('discord-cta').classList.remove('hidden');
         } else {
             throw new Error('Invalid response from server');
         }

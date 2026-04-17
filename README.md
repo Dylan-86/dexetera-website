@@ -192,6 +192,19 @@ You do. Dexetera never has custody of your assets. Your USDC remains in your wal
 
 ---
 
+## Local Development
+
+The website is a static HTML/CSS site served via Python's built-in HTTP server on port **6910**.
+
+**To start the server:**
+```bash
+python3 -m http.server 6910
+```
+
+**No restart required** when editing HTML, CSS, or any static files — the server reads files from disk on every request, so changes are reflected immediately on the next browser refresh.
+
+---
+
 ## Website Structure
 
 | File | Description |
