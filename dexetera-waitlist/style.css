@@ -175,7 +175,7 @@ button:hover {
     opacity: 0.95;
 }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
 .success { color: #4ade80; }
 .error { color: #f87171; }
 

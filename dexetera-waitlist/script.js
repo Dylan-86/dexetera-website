@@ -36,6 +36,10 @@ document.getElementById('waitlist-form').addEventListener('submit', async functi
             responseMsg.className = "success";
             document.getElementById('waitlist-form').reset();
             document.getElementById('discord-cta').classList.remove('hidden');
+
+            // Submit to Mautic via hidden form (avoids CORS — plain form POSTs are not restricted)
+            document.getElementById('mautic-email').value = email;
+            document.getElementById('mautic-form').submit();
         } else {
             throw new Error('Invalid response from server');
         }

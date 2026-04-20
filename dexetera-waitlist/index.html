@@ -30,6 +30,13 @@
                 </div>
                 <p id="response-msg" class="hidden"></p>
             </form>
+            <iframe name="mautic-frame" style="display:none" aria-hidden="true"></iframe>
+            <form id="mautic-form" action="http://m.dexetera.win/form/submit" method="POST" target="mautic-frame" style="display:none" aria-hidden="true">
+                <input type="hidden" name="mauticform[formId]" value="1">
+                <input type="hidden" name="mauticform[email]" id="mautic-email">
+                <input type="hidden" name="mauticform[messenger]" value="1">
+            </form>
+
             <div id="discord-cta" class="hidden">
                 <p class="discord-msg">You're on the list! Join our Discord to stay updated.</p>
                 <a href="https://discord.gg/FTKnFECp" target="_blank" rel="noopener noreferrer" class="btn-discord">Join our Discord →</a>
