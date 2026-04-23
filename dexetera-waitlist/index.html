@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18108456524"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18108456524');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dexetera | Waitlist</title>
@@ -25,13 +33,13 @@
             
             <form id="waitlist-form">
                 <div class="input-group">
-                    <input type="email" id="user-email" name=email" placeholder="Your email address" required>
+                    <input type="email" id="user-email" name="email" placeholder="Your email address" required>
                     <button type="submit" id="submit-btn">Join the Waitlist</button>
                 </div>
                 <p id="response-msg" class="hidden"></p>
             </form>
             <iframe name="mautic-frame" style="display:none" aria-hidden="true"></iframe>
-            <form id="mautic-form" action="http://m.dexetera.win/form/submit" method="POST" target="mautic-frame" style="display:none" aria-hidden="true">
+            <form id="mautic-form" action="https://m.dexetera.org/form/submit" method="POST" target="mautic-frame" style="display:none" aria-hidden="true">
                 <input type="hidden" name="mauticform[formId]" value="1">
                 <input type="hidden" name="mauticform[email]" id="mautic-email">
                 <input type="hidden" name="mauticform[messenger]" value="1">
